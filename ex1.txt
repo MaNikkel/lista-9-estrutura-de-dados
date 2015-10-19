@@ -1,0 +1,14 @@
+				Sequência 1
+push(s, 'a')     push(s, 'b')    push(s, 'c')      pop(s)        pop(s)        pop(s)
+                                       
+     a                b               c              b              a
+                      a               b              a
+                                      a
+				
+
+				Sequência 2
+push(s, 'a')	push(s, 'b')	push(s, 'c')	x=ElemTopo(s)	pop(s)    y=ElemTopo(s)     pop(s)     push(s, 'x')     push(s, 'y')     pop(s)
+						
+     a		     b		     c		     c		  b		b	      a		     x                y		   x
+		     a		     b		     b            a		a			     a		      x		   a
+				     a		     a									      a

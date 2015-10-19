@@ -1,0 +1,7 @@
+push(s2, pop(s1));
+push(s3, pop(s1));
+push(s2, pop(s1));
+push(s3, pop(s1));
+push(s1, pop(s2));
+push(s3, pop(s2));
+push(s3, pop(s1));
