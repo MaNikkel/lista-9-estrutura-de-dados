@@ -2,16 +2,6 @@
 #define N 3
 int fila[N], inicio = 0, fim = 0, circulou = 0;
 
-void circular()
-{
-	if((fim == N) &&(inicio != 0))
-	{
-		fim = 0;
-		circulou++;
-	}
-	if(inicio == N)
-		inicio = 0;
-}
 
 void exibir()
 {
@@ -20,54 +10,32 @@ void exibir()
 	{
 		printf("%d, ", fila[i]);
 	}
-	if(circulou != 0)
-	{
-		for(i = 0; i < fim; i++)
-			printf("%d, ", fila[i]);
-	}
 }
-
-int filaCheia()
-{
-	if(inicio-1 == fim)
-		return 0;
-	else
-		return 1;
-}
-
-int filaVazia()
-{
-	if (inicio == fim)
-		return 0;
-	else 
-		return 1;
-}
-
 
 void enqueue(int x)
 {
-	int cheia = filaCheia();
-	if(cheia == 1)
+	if (fim+1==inicio || (fim+1==N && !inicio)) 
 	{
-		fila[fim] = x;
-		fim++;
-		printf("\nenfileirado\n");
+		printf("\nLista cheia.\n");
+		return;
 	}
-	else
-		printf("\n\nfila cheia\n\n");
+	fila[fim]=x;
+	fim++;
+	if (fim==N)
+		fim=0; /* reinicia */
 }
 
 int dequeue()
 {
-	int vazia = filaVazia();
-	if(vazia)
+	if (inicio==N)
+		inicio=0; /* reinicia */
+	if (inicio==fim) 
 	{
-		inicio--;
-		printf("desenfileirado\n");
-		return fila[inicio+1];
+		printf("\nLista vazia.\n");
+		return -1;
 	}
-	else
-		printf("\n\nfila vazia\n\n");
+	inicio++;
+	return fila[inicio-1];
 }
 int main()
 {
@@ -76,7 +44,6 @@ int main()
 	{
 		printf("\n1 - enqueue\n2 - dequeue\n3 - exibir\n4 - sair\n");
 		scanf("%d", &op);
-		circular();
 		switch (op)
 		{
 			case 1:
